@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>Roi-calculator</title>
+    <style>
+      #gbm{
+        background: #2ea3f2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex justify-center items-center flex-col h-screen">
+      <div class="max-w-lg mx-auto border shadow-xl p-10 rounded">
+        <div class="text-center">
+          <h1>ROI - Calculator</h1>
+          <h1>How Much is My Clinic Worth?</h1>
+        </div>
+        <hr class="mt-5 block" />
+
+        <div class="max-w-md mx-auto mt-10">
+          <form>
+            <div>
+              <label class="text-xs pb-2 block" for="gbm"
+                >Gross Monthly Billings</label
+              >
+              <input
+                type="range"
+                min="5000"
+                max="150000"
+                class="w-full"
+                step="2"
+                name=""
+                id="gbm"
+                value="0"
+              />
+              <div class="flex justify-between text-xs">
+                <span>$5,000</span>
+                <span id="gbm-output" class="text-blue-500 text-lg font-bold"></span>
+                <span>$150,000+</span>
+              </div>
+            </div>
+            <div class="my-5 flex space-x-4">
+              <div class="w-full">
+                <label class="text-xs pb-2 block" for="patient-roster-size"
+                  >Patient Roster Size</label
+                >
+                <input
+                  type="text"
+                  class="border rounded p-2 w-full text-xs placeholder-gray-400"
+                  id="patient-roster-size"
+                  placeholder="0"
+                />
+              </div>
+              <div class="w-full">
+                <label class="text-xs pb-2 block" for="staff">Staff</label>
+                <input
+                  type="text"
+                  class="border rounded p-2 w-full text-xs placeholder-gray-400"
+                  id="staff"
+                  placeholder="0"
+                />
+              </div>
+            </div>
+            <div class="my-5 flex space-x-4">
+              <div>
+                <label class="text-xs pb-2 block" for="name">Name</label>
+                <input
+                  type="text"
+                  class="border rounded p-2 w-full text-xs placeholder-gray-400"
+                  id="name"
+                  placeholder="Varun Sharma"
+                />
+              </div>
+
+              <div>
+                <label class="text-xs pb-2 block" for="phone">Phone</label>
+                <input
+                  type="text"
+                  class="border rounded p-2 w-full text-xs placeholder-gray-400"
+                  id="phone"
+                  placeholder="+10542343444"
+                />
+              </div>
+            </div>
+            <div class="my-5">
+              <label class="text-xs pb-2 block" for="email"
+                >E-mail address</label
+              >
+              <input
+                type="email"
+                class="border rounded p-2 w-full text-xs placeholder-gray-400"
+                id="email"
+                placeholder="example@gmail.com"
+              />
+            </div>
+
+            <div>
+              <button class="py-2 px-4 bg-gray-200 rounded text-sm hover:bg-blue-500 hover:text-white transition-colors">Send Mail</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const gbm = document.getElementById("gbm");
+      const output = document.getElementById("gbm-output");
+
+      gbm.addEventListener("input", (e) => {
+        output.textContent = `$${parseFloat(e.target.value).toLocaleString()}`;
+      });
+    </script>
+  </body>
+</html>
