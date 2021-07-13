@@ -13,6 +13,9 @@
       #gbm{
         background: #2ea3f2;
       }
+       #gbm:active{
+        background: #2ea3f2;
+      }
     </style>
   </head>
   <body>
@@ -26,7 +29,7 @@
 
         <div class="max-w-md mx-auto mt-10">
           <form>
-            <div>
+            <div class="mb-8">
               <label class="text-xs pb-2 block" for="gbm"
                 >Gross Monthly Billings</label
               >
@@ -34,7 +37,7 @@
                 type="range"
                 min="5000"
                 max="150000"
-                class="w-full"
+                class="w-full border-gray-50"
                 step="2"
                 name=""
                 id="gbm"
@@ -46,6 +49,28 @@
                 <span>$150,000+</span>
               </div>
             </div>
+
+               <div>
+              <label class="text-xs pb-2 block" for="gbm"
+                >Rent</label
+              >
+              <input
+                type="range"
+                min="0"
+                max="15000"
+                class="w-full border-gray-50"
+                step="2"
+                name=""
+                id="gbm"
+                value="0"
+              />
+              <div class="flex justify-between text-xs">
+                <span>$0</span>
+                <span id="rent-output" class="text-blue-500 text-lg font-bold"></span>
+                <span>$15,000+</span>
+              </div>
+            </div>
+
             <div class="my-5 flex space-x-4">
               <div class="w-full">
                 <label class="text-xs pb-2 block" for="patient-roster-size"
@@ -112,9 +137,14 @@
     <script>
       const gbm = document.getElementById("gbm");
       const output = document.getElementById("gbm-output");
+      const rentOutput = document.getElementById("rent-output");
 
       gbm.addEventListener("input", (e) => {
         output.textContent = `$${parseFloat(e.target.value).toLocaleString()}`;
+      });
+
+       gbm.addEventListener("input", (e) => {
+        rentOutput.textContent = `$${parseFloat(e.target.value).toLocaleString()}`;
       });
     </script>
   </body>
