@@ -4,31 +4,28 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
+    <link href="./css/styles.css" rel="stylesheet" />
     <title>Roi-calculator</title>
     <style>
-      #gbm{
+      #gbm {
         background: #2ea3f2;
       }
-       #gbm:active{
+      #gbm:active {
         background: #2ea3f2;
       }
     </style>
   </head>
   <body>
-    <div class="flex justify-center items-center flex-col h-screen">
-      <div class="max-w-lg mx-auto border shadow-xl p-10 rounded">
+    <div class="sm:flex justify-center items-center flex-col h-screen">
+      <div class="md:max-w-lg md:mx-auto border shadow-xl p-10 rounded">
         <div class="text-center">
           <h1>ROI - Calculator</h1>
           <h1>How Much is My Clinic Worth?</h1>
         </div>
-        <hr class="mt-5 block" />
+        <hr class="my-5 block" />
 
-        <div class="max-w-md mx-auto mt-10">
-          <form>
+        <div class="md:max-w-md md:mx-auto md:mt-10 mt-5">
+          <form id="form">
             <div class="mb-8">
               <label class="text-xs pb-2 block" for="gbm"
                 >Gross Monthly Billings</label
@@ -38,22 +35,38 @@
                 min="5000"
                 max="150000"
                 class="w-full border-gray-50"
-                step="2"
+                step="1"
                 name=""
                 id="gbm"
                 value="0"
               />
               <div class="flex justify-between text-xs">
                 <span>$5,000</span>
-                <span id="gbm-output" class="text-blue-500 text-lg font-bold"></span>
+                <span
+                  id="gbm-output"
+                  class="text-blue-500 text-lg font-bold transition"
+                ></span>
+
+                <input
+                  type="text"
+                  id="gmb-input"
+                  class="
+                    focus:outline-none
+                    hidden
+                    text-blue-500 text-lg
+                    font-bold
+                    transitio
+                    text-center
+                  "
+                  value="0"
+                />
+
                 <span>$150,000+</span>
               </div>
             </div>
 
-               <div>
-              <label class="text-xs pb-2 block" for="gbm"
-                >Rent</label
-              >
+            <div>
+              <label class="text-xs pb-2 block" for="rent">Rent</label>
               <input
                 type="range"
                 min="0"
@@ -61,29 +74,32 @@
                 class="w-full border-gray-50"
                 step="2"
                 name=""
-                id="gbm"
+                id="rent"
                 value="0"
               />
               <div class="flex justify-between text-xs">
                 <span>$0</span>
-                <span id="rent-output" class="text-blue-500 text-lg font-bold"></span>
+                <span
+                  id="rent-output"
+                  class="text-blue-500 text-lg font-bold"
+                ></span>
                 <span>$15,000+</span>
               </div>
             </div>
 
-            <div class="my-5 flex space-x-4">
+            <div class="my-5 md:flex md:space-x-4">
               <div class="w-full">
-                <label class="text-xs pb-2 block" for="patient-roster-size"
+                <label class="text-xs pb-2 block" for="prs"
                   >Patient Roster Size</label
                 >
                 <input
                   type="text"
                   class="border rounded p-2 w-full text-xs placeholder-gray-400"
-                  id="patient-roster-size"
+                  id="prs"
                   placeholder="0"
                 />
               </div>
-              <div class="w-full">
+              <div class="w-full mt-5 md:mt-0">
                 <label class="text-xs pb-2 block" for="staff">Staff</label>
                 <input
                   type="text"
@@ -93,7 +109,7 @@
                 />
               </div>
             </div>
-            <div class="my-5 flex space-x-4">
+            <!-- <div class="my-5 md:flex md:space-x-4">
               <div>
                 <label class="text-xs pb-2 block" for="name">Name</label>
                 <input
@@ -104,7 +120,7 @@
                 />
               </div>
 
-              <div>
+              <div class="mt-5 md:mt-0">
                 <label class="text-xs pb-2 block" for="phone">Phone</label>
                 <input
                   type="text"
@@ -124,28 +140,241 @@
                 id="email"
                 placeholder="example@gmail.com"
               />
-            </div>
+            </div> -->
 
-            <div>
-              <button class="py-2 px-4 bg-gray-200 rounded text-sm hover:bg-blue-500 hover:text-white transition-colors">Send Mail</button>
+            <div class="mt-10">
+              <button
+                type="submit"
+                class="
+                  py-2
+                  px-4
+                  bg-gray-200
+                  rounded
+                  text-sm
+                  hover:bg-blue-500 hover:text-white
+                  transition-colors
+                "
+              >
+                Calculate
+              </button>
             </div>
+            <div
+              class="
+                text-center text-sm
+                mt-6
+                py-3
+                rounded
+                bg-green-500
+                text-white
+                hidden
+              "
+              id="msg"
+            ></div>
           </form>
+
+          <div
+            class="text-xs mt-6 py-3 transform scale-0 transition-transform"
+            id="results"
+          >
+            <div>
+              <b>GROSS MONTHLY BILLINGS : </b>
+              <span class="text-blue-500" id="gmbResult"></span>
+            </div>
+            <div>
+              <b>RENT : </b> <span class="text-blue-500" id="rentResult"></span>
+            </div>
+            <div>
+              <b>CLINIC : </b>
+              <span class="text-blue-500" id="clinicResult"></span>
+            </div>
+            <div>
+              <b>TOTAL CLINIC VALUE : </b>
+              <span class="text-blue-500" id="totalValueResult"></span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
     <script>
-      const gbm = document.getElementById("gbm");
-      const output = document.getElementById("gbm-output");
+      const form = document.getElementById("form");
+      const gmb = document.getElementById("gbm");
+      const rent = document.getElementById("rent");
+      const gmbOutput = document.getElementById("gbm-output");
+      const gmbInput = document.getElementById("gmb-input");
       const rentOutput = document.getElementById("rent-output");
+      const staff = document.getElementById("staff");
+      const rosterSize = document.getElementById("prs");
+      const msg = document.getElementById("msg");
+      const results = document.getElementById("results");
 
-      gbm.addEventListener("input", (e) => {
-        output.textContent = `$${parseFloat(e.target.value).toLocaleString()}`;
+      form.addEventListener("submit", onSubmit);
+      // rentOutput.addEventListener("click", () => {
+      //   rentOutput.style.display = "none";
+      //   console.log(rentOutput.textContent);
+      // });
+
+      // gmbOutput.addEventListener("click", () => {
+      //   gmbOutput.style.display = "none";
+      //   gmb.value = undefined;
+      //   gmbInput.classList.remove("hidden");
+      //   gmbInput.classList.add("block");
+      //   gmbInput.value = gmbOutput.textContent;
+      // });
+
+      const clinicPremiums = [1.15, 1.05, 0.95, 0.7];
+      const totalClinicValuePremiums = [1.3, 1.2, 0.8];
+
+      gmb.addEventListener("input", (e) => {
+        gmbOutput.textContent = `$${parseFloat(
+          e.target.value
+        ).toLocaleString()}`;
       });
 
-       gbm.addEventListener("input", (e) => {
-        rentOutput.textContent = `$${parseFloat(e.target.value).toLocaleString()}`;
+      rent.addEventListener("input", (e) => {
+        rentOutput.textContent = `$${parseFloat(
+          e.target.value
+        ).toLocaleString()}`;
       });
+
+      function displayResults(GMB, RENT, clinicValue, clinicValueT) {
+        let gmbResult = document.getElementById("gmbResult");
+        let rentResult = document.getElementById("rentResult");
+        let clinicResult = document.getElementById("clinicResult");
+        let totalValueResult = document.getElementById("totalValueResult");
+
+        gmbResult.textContent = `$${GMB.toLocaleString()}`;
+        rentResult.textContent = `$${RENT.toLocaleString()}`;
+        clinicResult.textContent = `$${clinicValue.toLocaleString()}`;
+        totalValueResult.textContent = `$${clinicValueT.toLocaleString()}`;
+
+        console.log(typeof clinicValue);
+        if (!clinicValue) {
+          setTimeout(() => {
+            results.classList.remove("scale-100");
+            results.classList.add("scale-0");
+          }, 4000);
+        }
+      }
+
+      function onSubmit(e) {
+        e.preventDefault();
+        const GMB = parseInt(gmb.value);
+        const RENT = parseInt(rent.value);
+        const STAFF = parseInt(staff.value);
+        const ROSTER_SIZE = parseInt(rosterSize.value);
+
+        const clinicValue = calculateClinicValue(GMB, RENT, STAFF, ROSTER_SIZE);
+        const clinicValueT = calculateTotalClinicValue(
+          GMB,
+          RENT,
+          STAFF,
+          ROSTER_SIZE
+        );
+        console.log("clinicValueT: ", clinicValueT);
+        clearFields();
+        // displayMailSentMsg();
+        results.classList.remove("scale-0");
+        results.classList.add("scale-100");
+        displayResults(GMB, RENT, clinicValue, clinicValueT);
+        return clinicValue;
+      }
+
+      function calculateStaffCost(staff) {
+        const HOURS = 140;
+        const DOLLAR = 20;
+        const staffCost = staff * HOURS * DOLLAR;
+        return staffCost;
+      }
+
+      function calculateClinic(gmb, premium) {
+        const BVA = 2;
+        const clinic = premium * BVA * gmb;
+        return clinic;
+      }
+
+      function calculateClinicValue(gmb, rent, staff, rosterSize) {
+        let clinic = 0;
+        const X_MULTIPLE = 0.25;
+        const staffCost = calculateStaffCost(staff);
+        const VALUE_OF_CLINIC = X_MULTIPLE * gmb - rent - staffCost;
+
+        console.log("VALUE_OF_CLINIC: ", VALUE_OF_CLINIC);
+        console.log("staffCost: ", staffCost);
+        console.log("rosterSize: ", rosterSize);
+
+        if (VALUE_OF_CLINIC > 2 * rosterSize) {
+          clinic = calculateClinic(gmb, clinicPremiums[0]);
+          console.log("clinic1: ", clinic);
+          return clinic;
+        }
+        if (VALUE_OF_CLINIC > rosterSize) {
+          clinic = calculateClinic(gmb, clinicPremiums[1]);
+          console.log("clinic2: ", clinic);
+          return clinic;
+        }
+        if (VALUE_OF_CLINIC < 0) {
+          clinic = calculateClinic(gmb, clinicPremiums[3]);
+          console.log("clinic3: ", clinic);
+          return clinic;
+        }
+
+        if (VALUE_OF_CLINIC < rosterSize) {
+          clinic = calculateClinic(gmb, clinicPremiums[2]);
+          console.log("clinic4: ", clinic);
+          return clinic;
+        }
+      }
+
+      function calculateTotalClinicValue(gmb, rent, staff, rosterSize) {
+        let totalClinicValue = 0;
+        const clinicValue = calculateClinicValue(gmb, rent, staff, rosterSize);
+        if (rosterSize > 1400) {
+          totalClinicValue =
+            clinicValue + totalClinicValuePremiums[0] * rosterSize;
+          console.log("totalClinicValue1: ", totalClinicValue);
+
+          return totalClinicValue;
+        }
+        if (rosterSize > 800) {
+          totalClinicValue =
+            clinicValue + totalClinicValuePremiums[1] * rosterSize;
+          console.log("totalClinicValue2: ", totalClinicValue);
+
+          return totalClinicValue;
+        }
+
+        if (rosterSize < 800) {
+          totalClinicValue =
+            clinicValue + totalClinicValuePremiums[2] * rosterSize;
+          console.log("totalClinicValue2: ", totalClinicValue);
+
+          return totalClinicValue;
+        }
+
+        console.log("totalClinicValue: ", totalClinicValue);
+
+        return totalClinicValue;
+      }
+
+      function sendReportMail() {}
+
+      function displayMailSentMsg() {
+        msg.classList.remove("hidden");
+        msg.innerHTML = "<span>The Report Sent Has To Your Email !!</span>";
+        setTimeout(() => {
+          msg.classList.add("hidden");
+        }, 3000);
+      }
+
+      function clearFields() {
+        gmb.value = 0;
+        rent.value = 0;
+        staff.value = "";
+        rosterSize.value = "";
+        gmbOutput.textContent = "";
+        rentOutput.textContent = "";
+      }
     </script>
   </body>
 </html>
