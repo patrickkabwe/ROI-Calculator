@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./css/styles.css" rel="stylesheet" />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
     <title>Roi-calculator</title>
     <style>
       #gbm {
@@ -17,7 +20,7 @@
   </head>
   <body>
     <div class="sm:flex justify-center items-center flex-col h-screen">
-      <div class="md:max-w-lg md:mx-auto border shadow-xl p-10 rounded">
+      <div class="md:max-w-lg md:mx-auto border shadow-xl p-10 rounded w-full">
         <div class="text-center">
           <h1>ROI - Calculator</h1>
           <h1>How Much is My Clinic Worth?</h1>
@@ -35,10 +38,10 @@
                 min="5000"
                 max="150000"
                 class="w-full border-gray-50"
-                step="1"
+                step="10"
                 name=""
                 id="gbm"
-                value="0"
+                value="30000"
               />
               <div class="flex justify-between text-xs">
                 <span>$5,000</span>
@@ -58,7 +61,7 @@
                     transitio
                     text-center
                   "
-                  value="0"
+                  value=""
                 />
 
                 <span>$150,000+</span>
@@ -72,10 +75,10 @@
                 min="0"
                 max="15000"
                 class="w-full border-gray-50"
-                step="2"
+                step="1.5"
                 name=""
                 id="rent"
-                value="0"
+                value="2000"
               />
               <div class="flex justify-between text-xs">
                 <span>$0</span>
@@ -87,28 +90,53 @@
               </div>
             </div>
 
-            <div class="my-5 md:flex md:space-x-4">
-              <div class="w-full">
-                <label class="text-xs pb-2 block" for="prs"
-                  >Patient Roster Size</label
-                >
-                <input
-                  type="text"
-                  class="border rounded p-2 w-full text-xs placeholder-gray-400"
-                  id="prs"
-                  placeholder="0"
-                />
-              </div>
-              <div class="w-full mt-5 md:mt-0">
-                <label class="text-xs pb-2 block" for="staff">Staff</label>
-                <input
-                  type="text"
-                  class="border rounded p-2 w-full text-xs placeholder-gray-400"
-                  id="staff"
-                  placeholder="0"
-                />
+            <div class="w-full my-8">
+              <label class="text-xs pb-2 block" for="prs"
+                >Patient Roster Size</label
+              >
+              <input
+                type="range"
+                min="0"
+                max="1000"
+                class="w-full border-gray-50"
+                step="1"
+                name=""
+                id="prs"
+                value="10"
+              />
+              <div class="flex justify-between text-xs">
+                <span>10</span>
+                <span
+                  id="rent-output"
+                  class="text-blue-500 text-lg font-bold"
+                ></span>
+                <span>1,000+</span>
               </div>
             </div>
+
+            <div class="w-full mt-5 md:mt-0">
+              <label class="text-xs pb-2 block" for="staff">Staff</label>
+
+              <input
+                type="range"
+                min="1"
+                max="20"
+                class="w-full border-gray-50"
+                step="1.5"
+                name=""
+                id="staff"
+                value="0"
+              />
+              <div class="flex justify-between text-xs">
+                <span>1</span>
+                <span
+                  id="rent-output"
+                  class="text-blue-500 text-lg font-bold"
+                ></span>
+                <span>20</span>
+              </div>
+            </div>
+
             <!-- <div class="my-5 md:flex md:space-x-4">
               <div>
                 <label class="text-xs pb-2 block" for="name">Name</label>
@@ -158,6 +186,7 @@
                 Calculate
               </button>
             </div>
+
             <div
               class="
                 text-center text-sm
@@ -173,23 +202,15 @@
           </form>
 
           <div
-            class="text-xs mt-6 py-3 transform scale-0 transition-transform"
+            class="text-sm mt-6 py-3 transform scale-0 transition-transform"
             id="results"
           >
             <div>
-              <b>GROSS MONTHLY BILLINGS : </b>
-              <span class="text-blue-500" id="gmbResult"></span>
-            </div>
-            <div>
-              <b>RENT : </b> <span class="text-blue-500" id="rentResult"></span>
-            </div>
-            <div>
-              <b>CLINIC : </b>
-              <span class="text-blue-500" id="clinicResult"></span>
-            </div>
-            <div>
               <b>TOTAL CLINIC VALUE : </b>
-              <span class="text-blue-500" id="totalValueResult"></span>
+              <span
+                class="text-blue-500 font-bold text-md"
+                id="totalValueResult"
+              ></span>
             </div>
           </div>
         </div>
@@ -238,14 +259,7 @@
       });
 
       function displayResults(GMB, RENT, clinicValue, clinicValueT) {
-        let gmbResult = document.getElementById("gmbResult");
-        let rentResult = document.getElementById("rentResult");
-        let clinicResult = document.getElementById("clinicResult");
         let totalValueResult = document.getElementById("totalValueResult");
-
-        gmbResult.textContent = `$${GMB.toLocaleString()}`;
-        rentResult.textContent = `$${RENT.toLocaleString()}`;
-        clinicResult.textContent = `$${clinicValue.toLocaleString()}`;
         totalValueResult.textContent = `$${clinicValueT.toLocaleString()}`;
 
         console.log(typeof clinicValue);
@@ -274,6 +288,7 @@
         console.log("clinicValueT: ", clinicValueT);
         clearFields();
         // displayMailSentMsg();
+        results.classList.remove("scale-100");
         results.classList.remove("scale-0");
         results.classList.add("scale-100");
         displayResults(GMB, RENT, clinicValue, clinicValueT);
@@ -368,10 +383,10 @@
       }
 
       function clearFields() {
-        gmb.value = 0;
-        rent.value = 0;
-        staff.value = "";
-        rosterSize.value = "";
+        gmb.value = 30000;
+        rent.value = 2000;
+        staff.value = 1;
+        rosterSize.value = 10;
         gmbOutput.textContent = "";
         rentOutput.textContent = "";
       }
