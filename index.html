@@ -202,11 +202,19 @@
           </form>
 
           <div
-            class="text-sm mt-6 py-3 transform scale-0 transition-transform text-center"
+            class="
+              text-sm
+              mt-6
+              py-3
+              transform
+              scale-0
+              transition-transform
+              text-center
+            "
             id="results"
           >
             <div>
-              <b>TOTAL CLINIC VALUE : </b><br>
+              <b>TOTAL CLINIC VALUE : </b><br />
               <span
                 class="text-blue-500 font-bold text-lg"
                 id="totalValueResult"
@@ -230,24 +238,23 @@
       const rosterSize = document.getElementById("prs");
       const msg = document.getElementById("msg");
       const results = document.getElementById("results");
-
-      form.addEventListener("submit", onSubmit);
-      // rentOutput.addEventListener("click", () => {
-      //   rentOutput.style.display = "none";
-      //   console.log(rentOutput.textContent);
-      // });
-
-      function autoCalculate() {
-        gmb.value = 30000;
-        rent.value = 2000;
-        staff.value = 1;
-        rosterSize.value = 10;
-        gmbOutput.textContent = "";
-        rentOutput.textContent = "";
-      }
-
       const clinicPremiums = [1.15, 1.05, 0.95, 0.7];
       const totalClinicValuePremiums = [1.3, 1.2, 0.8];
+
+      // All Events
+      form.addEventListener("submit", onSubmit);
+
+      // Add Initial Values
+      document.addEventListener("DOMContentLoaded", () => {
+        gmbOutput.textContent = `$${parseFloat(gmb.value).toLocaleString()}`;
+        rentOutput.textContent = `$${parseFloat(rent.value).toLocaleString()}`;
+        staffOutput.textContent = `$${parseFloat(
+          staff.value
+        ).toLocaleString()}`;
+        prsOutput.textContent = `$${parseFloat(
+          rosterSize.value
+        ).toLocaleString()}`;
+      });
 
       gmb.addEventListener("input", (e) => {
         onSubmit();
@@ -272,6 +279,8 @@
         onSubmit();
         prsOutput.textContent = parseFloat(e.target.value);
       });
+
+      // Functions
 
       function displayResults(clinicValueT) {
         let totalValueResult = document.getElementById("totalValueResult");
@@ -320,7 +329,6 @@
         const X_MULTIPLE = 0.25;
         const staffCost = calculateStaffCost(staff);
         const VALUE_OF_CLINIC = X_MULTIPLE * gmb - rent - staffCost;
-
 
         if (VALUE_OF_CLINIC > 2 * rosterSize) {
           clinic = calculateClinic(gmb, clinicPremiums[0]);
