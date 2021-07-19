@@ -96,7 +96,7 @@
               >
               <input
                 type="range"
-                min="0"
+                min="10"
                 max="1000"
                 class="w-full border-gray-50"
                 step="10"
@@ -114,7 +114,7 @@
               </div>
             </div>
 
-            <div class="w-full mt-5 md:mt-0">
+            <div class="w-full md:mt-0">
               <label class="text-xs pb-2 block" for="staff">Staff</label>
 
               <input
@@ -170,7 +170,7 @@
               />
             </div> -->
 
-            <div class="mt-10">
+            <!-- <div class="mt-10">
               <button
                 type="submit"
                 class="
@@ -185,7 +185,7 @@
               >
                 Calculate
               </button>
-            </div>
+            </div> -->
 
             <div
               class="
@@ -202,13 +202,13 @@
           </form>
 
           <div
-            class="text-sm mt-6 py-3 transform scale-0 transition-transform"
+            class="text-sm mt-6 py-3 transform scale-0 transition-transform text-center"
             id="results"
           >
             <div>
-              <b>TOTAL CLINIC VALUE : </b>
+              <b>TOTAL CLINIC VALUE : </b><br>
               <span
-                class="text-blue-500 font-bold text-md"
+                class="text-blue-500 font-bold text-lg"
                 id="totalValueResult"
               ></span>
             </div>
@@ -250,40 +250,36 @@
       const totalClinicValuePremiums = [1.3, 1.2, 0.8];
 
       gmb.addEventListener("input", (e) => {
+        onSubmit();
         gmbOutput.textContent = `$${parseFloat(
           e.target.value
         ).toLocaleString()}`;
       });
 
       rent.addEventListener("input", (e) => {
+        onSubmit();
         rentOutput.textContent = `$${parseFloat(
           e.target.value
         ).toLocaleString()}`;
       });
 
       staff.addEventListener("input", (e) => {
+        onSubmit();
         staffOutput.textContent = parseFloat(e.target.value);
       });
 
       rosterSize.addEventListener("input", (e) => {
+        onSubmit();
         prsOutput.textContent = parseFloat(e.target.value);
       });
 
-      function displayResults(GMB, RENT, clinicValue, clinicValueT) {
+      function displayResults(clinicValueT) {
         let totalValueResult = document.getElementById("totalValueResult");
         totalValueResult.textContent = `$${clinicValueT.toLocaleString()}`;
-
-        console.log(typeof clinicValue);
-        if (!clinicValue) {
-          setTimeout(() => {
-            results.classList.remove("scale-100");
-            results.classList.add("scale-0");
-          }, 4000);
-        }
       }
 
       function onSubmit(e) {
-        e.preventDefault();
+        e?.preventDefault();
         const GMB = parseInt(gmb.value);
         const RENT = parseInt(rent.value);
         const STAFF = parseInt(staff.value);
@@ -296,13 +292,13 @@
           STAFF,
           ROSTER_SIZE
         );
-        console.log("clinicValueT: ", clinicValueT);
-        clearFields();
+
+        // clearFields();
         // displayMailSentMsg();
         results.classList.remove("scale-100");
         results.classList.remove("scale-0");
         results.classList.add("scale-100");
-        displayResults(GMB, RENT, clinicValue, clinicValueT);
+        displayResults(clinicValueT);
         return clinicValue;
       }
 
@@ -325,9 +321,6 @@
         const staffCost = calculateStaffCost(staff);
         const VALUE_OF_CLINIC = X_MULTIPLE * gmb - rent - staffCost;
 
-        console.log("VALUE_OF_CLINIC: ", VALUE_OF_CLINIC);
-        console.log("staffCost: ", staffCost);
-        console.log("rosterSize: ", rosterSize);
 
         if (VALUE_OF_CLINIC > 2 * rosterSize) {
           clinic = calculateClinic(gmb, clinicPremiums[0]);
