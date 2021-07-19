@@ -248,10 +248,10 @@
       document.addEventListener("DOMContentLoaded", () => {
         gmbOutput.textContent = `$${parseFloat(gmb.value).toLocaleString()}`;
         rentOutput.textContent = `$${parseFloat(rent.value).toLocaleString()}`;
-        staffOutput.textContent = `$${parseFloat(
+        staffOutput.textContent = `${parseFloat(
           staff.value
         ).toLocaleString()}`;
-        prsOutput.textContent = `$${parseFloat(
+        prsOutput.textContent = `${parseFloat(
           rosterSize.value
         ).toLocaleString()}`;
       });
