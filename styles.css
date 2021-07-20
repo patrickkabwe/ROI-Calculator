@@ -17,7 +17,7 @@ body {
 }
 
 .shadow {
-  /* box-shadow: 2px 2px 30px 10px f1f5f7; */
+  box-shadow: 1px 1px 10px 5px #eeeeee;
 }
 
 .ori__container {
@@ -142,6 +142,6 @@ body {
 
 @media (min-width: 1024px) {
   .ori__container {
-    max-width: 35%;
+    max-width: 40%;
   }
 }
