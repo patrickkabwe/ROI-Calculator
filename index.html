@@ -4,188 +4,98 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
+    <!--  href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" -->
+    <link href="./styles.css" rel="stylesheet" />
     <title>Roi-calculator</title>
-    <style>
-      #gbm {
-        background: #2ea3f2;
-      }
-      #gbm:active {
-        background: #2ea3f2;
-      }
-    </style>
   </head>
   <body>
-    <div class="sm:flex justify-center items-center flex-col h-screen">
-      <div class="md:max-w-lg md:mx-auto border shadow-xl p-10 rounded w-full">
-        <div class="text-center">
-          <h1>ROI - Calculator</h1>
-          <h1>How Much is My Clinic Worth?</h1>
+    <div class="ori__container">
+      <div class="shadow ori__container--inner">
+        <div class="header">
+          <h2 class="">What’s your practice worth?</h2>
+          <p class="">
+            Calculate the value of your clinic and see how much you could get
+            for your life’s work.
+          </p>
         </div>
-        <hr class="my-5 block" />
 
-        <div class="md:max-w-md md:mx-auto md:mt-10 mt-5">
+        <div class="">
           <form id="form">
-            <div class="mb-8">
-              <label class="text-xs pb-2 block" for="gbm"
-                >Gross Monthly Billings</label
-              >
-              <input
-                type="range"
-                min="5000"
-                max="150000"
-                class="w-full border-gray-50"
-                step="10"
-                name=""
-                id="gbm"
-                value="30000"
-              />
-              <div class="flex justify-between text-xs">
-                <span>$5,000</span>
-                <span
-                  id="gbm-output"
-                  class="text-blue-500 text-lg font-bold transition"
-                ></span>
-
+            <!-- GMB -->
+            <div class="slider-wrapper">
+              <p>Gross Monthly Billings</p>
+              <div class="slider-content">
+                <span id="gbm-output" class="tooltip"></span>
                 <input
-                  type="text"
-                  id="gmb-input"
-                  class="
-                    focus:outline-none
-                    hidden
-                    text-blue-500 text-lg
-                    font-bold
-                    transitio
-                    text-center
-                  "
-                  value=""
-                />
-
-                <span>$150,000+</span>
-              </div>
-            </div>
-
-            <div>
-              <label class="text-xs pb-2 block" for="rent">Rent</label>
-              <input
-                type="range"
-                min="0"
-                max="15000"
-                class="w-full border-gray-50"
-                step="1.5"
-                name=""
-                id="rent"
-                value="2000"
-              />
-              <div class="flex justify-between text-xs">
-                <span>$0</span>
-                <span
-                  id="rent-output"
-                  class="text-blue-500 text-lg font-bold"
-                ></span>
-                <span>$15,000+</span>
-              </div>
-            </div>
-
-            <div class="w-full my-8">
-              <label class="text-xs pb-2 block" for="prs"
-                >Patient Roster Size</label
-              >
-              <input
-                type="range"
-                min="10"
-                max="1000"
-                class="w-full border-gray-50"
-                step="10"
-                name=""
-                id="prs"
-                value="10"
-              />
-              <div class="flex justify-between text-xs">
-                <span>10</span>
-                <span
-                  id="prs-output"
-                  class="text-blue-500 text-lg font-bold"
-                ></span>
-                <span>1,000+</span>
-              </div>
-            </div>
-
-            <div class="w-full md:mt-0">
-              <label class="text-xs pb-2 block" for="staff">Staff</label>
-
-              <input
-                type="range"
-                min="1"
-                max="20"
-                class="w-full border-gray-50"
-                step="1"
-                name=""
-                id="staff"
-                value="0"
-              />
-              <div class="flex justify-between text-xs">
-                <span>1</span>
-                <span
-                  id="staff-output"
-                  class="text-blue-500 text-lg font-bold"
-                ></span>
-                <span>20</span>
-              </div>
-            </div>
-
-            <!-- <div class="my-5 md:flex md:space-x-4">
-              <div>
-                <label class="text-xs pb-2 block" for="name">Name</label>
-                <input
-                  type="text"
-                  class="border rounded p-2 w-full text-xs placeholder-gray-400"
-                  id="name"
-                  placeholder="Varun Sharma"
-                />
-              </div>
-
-              <div class="mt-5 md:mt-0">
-                <label class="text-xs pb-2 block" for="phone">Phone</label>
-                <input
-                  type="text"
-                  class="border rounded p-2 w-full text-xs placeholder-gray-400"
-                  id="phone"
-                  placeholder="+10542343444"
+                  type="range"
+                  min="5000"
+                  max="150000"
+                  step="10"
+                  id="gbm"
+                  value="30000"
+                  class="slider"
                 />
               </div>
             </div>
-            <div class="my-5">
-              <label class="text-xs pb-2 block" for="email"
-                >E-mail address</label
-              >
-              <input
-                type="email"
-                class="border rounded p-2 w-full text-xs placeholder-gray-400"
-                id="email"
-                placeholder="example@gmail.com"
-              />
-            </div> -->
+            <!-- End of GMB -->
 
-            <!-- <div class="mt-10">
-              <button
-                type="submit"
-                class="
-                  py-2
-                  px-4
-                  bg-gray-200
-                  rounded
-                  text-sm
-                  hover:bg-blue-500 hover:text-white
-                  transition-colors
-                "
-              >
-                Calculate
-              </button>
-            </div> -->
+            <!-- RENT -->
+
+            <div class="slider-wrapper">
+              <p>Rent</p>
+              <div class="slider-content">
+                <span id="rent-output" class="tooltip"></span>
+                <input
+                  type="range"
+                  min="0"
+                  max="15000"
+                  step="1.5"
+                  id="rent"
+                  value="2000"
+                  class="slider"
+                />
+              </div>
+            </div>
+
+            <!-- End of RENT -->
+
+            <!-- ROSTER -->
+
+            <div class="slider-wrapper">
+              <p>Patient Roster Size</p>
+              <div class="slider-content">
+                <span id="prs-output" class="tooltip"></span>
+                <input
+                  type="range"
+                  min="10"
+                  max="1000"
+                  step="10"
+                  id="prs"
+                  value="10"
+                  class="slider"
+                />
+              </div>
+            </div>
+
+            <!-- End of ROSTER -->
+
+            <!-- STAFF -->
+            <div class="slider-wrapper">
+              <p>Staff</p>
+              <div class="slider-content">
+                <span id="staff-output" class="tooltip"></span>
+                <input
+                  type="range"
+                  min="1"
+                  max="20"
+                  step="1"
+                  id="staff"
+                  class="slider"
+                />
+              </div>
+            </div>
+
+            <!-- End of STAFF -->
 
             <div
               class="
@@ -201,207 +111,17 @@
             ></div>
           </form>
 
-          <div
-            class="
-              text-sm
-              mt-6
-              py-3
-              transform
-              scale-0
-              transition-transform
-              text-center
-            "
-            id="results"
-          >
-            <div>
-              <b>TOTAL CLINIC VALUE : </b><br />
-              <span
-                class="text-blue-500 font-bold text-lg"
-                id="totalValueResult"
-              ></span>
+          <div class="footer" id="results">
+            <div class="footer__inner">
+              <p>You could receive</p>
+              <h4 id="totalValueResult">$336,751</h4>
+              <p>for your clinic</p>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <script>
-      const form = document.getElementById("form");
-      const gmb = document.getElementById("gbm");
-      const rent = document.getElementById("rent");
-      const gmbOutput = document.getElementById("gbm-output");
-      const gmbInput = document.getElementById("gmb-input");
-      const rentOutput = document.getElementById("rent-output");
-      const prsOutput = document.getElementById("prs-output");
-      const staffOutput = document.getElementById("staff-output");
-      const staff = document.getElementById("staff");
-      const rosterSize = document.getElementById("prs");
-      const msg = document.getElementById("msg");
-      const results = document.getElementById("results");
-      const clinicPremiums = [1.15, 1.05, 0.95, 0.7];
-      const totalClinicValuePremiums = [1.3, 1.2, 0.8];
-
-      // All Events
-      form.addEventListener("submit", onSubmit);
-
-      // Add Initial Values
-      document.addEventListener("DOMContentLoaded", () => {
-        gmbOutput.textContent = `$${parseFloat(gmb.value).toLocaleString()}`;
-        rentOutput.textContent = `$${parseFloat(rent.value).toLocaleString()}`;
-        staffOutput.textContent = `${parseFloat(
-          staff.value
-        ).toLocaleString()}`;
-        prsOutput.textContent = `${parseFloat(
-          rosterSize.value
-        ).toLocaleString()}`;
-      });
-
-      gmb.addEventListener("input", (e) => {
-        onSubmit();
-        gmbOutput.textContent = `$${parseFloat(
-          e.target.value
-        ).toLocaleString()}`;
-      });
-
-      rent.addEventListener("input", (e) => {
-        onSubmit();
-        rentOutput.textContent = `$${parseFloat(
-          e.target.value
-        ).toLocaleString()}`;
-      });
-
-      staff.addEventListener("input", (e) => {
-        onSubmit();
-        staffOutput.textContent = parseFloat(e.target.value);
-      });
-
-      rosterSize.addEventListener("input", (e) => {
-        onSubmit();
-        prsOutput.textContent = parseFloat(e.target.value);
-      });
-
-      // Functions
-
-      function displayResults(clinicValueT) {
-        let totalValueResult = document.getElementById("totalValueResult");
-        totalValueResult.textContent = `$${clinicValueT.toLocaleString()}`;
-      }
-
-      function onSubmit(e) {
-        e?.preventDefault();
-        const GMB = parseInt(gmb.value);
-        const RENT = parseInt(rent.value);
-        const STAFF = parseInt(staff.value);
-        const ROSTER_SIZE = parseInt(rosterSize.value);
-
-        const clinicValue = calculateClinicValue(GMB, RENT, STAFF, ROSTER_SIZE);
-        const clinicValueT = calculateTotalClinicValue(
-          GMB,
-          RENT,
-          STAFF,
-          ROSTER_SIZE
-        );
-
-        // clearFields();
-        // displayMailSentMsg();
-        results.classList.remove("scale-100");
-        results.classList.remove("scale-0");
-        results.classList.add("scale-100");
-        displayResults(clinicValueT);
-        return clinicValue;
-      }
-
-      function calculateStaffCost(staff) {
-        const HOURS = 140;
-        const DOLLAR = 20;
-        const staffCost = staff * HOURS * DOLLAR;
-        return staffCost;
-      }
-
-      function calculateClinic(gmb, premium) {
-        const BVA = 2;
-        const clinic = premium * BVA * gmb;
-        return clinic;
-      }
-
-      function calculateClinicValue(gmb, rent, staff, rosterSize) {
-        let clinic = 0;
-        const X_MULTIPLE = 0.25;
-        const staffCost = calculateStaffCost(staff);
-        const VALUE_OF_CLINIC = X_MULTIPLE * gmb - rent - staffCost;
-
-        if (VALUE_OF_CLINIC > 2 * rosterSize) {
-          clinic = calculateClinic(gmb, clinicPremiums[0]);
-          console.log("clinic1: ", clinic);
-          return clinic;
-        }
-        if (VALUE_OF_CLINIC > rosterSize) {
-          clinic = calculateClinic(gmb, clinicPremiums[1]);
-          console.log("clinic2: ", clinic);
-          return clinic;
-        }
-        if (VALUE_OF_CLINIC < 0) {
-          clinic = calculateClinic(gmb, clinicPremiums[3]);
-          console.log("clinic3: ", clinic);
-          return clinic;
-        }
-
-        if (VALUE_OF_CLINIC < rosterSize) {
-          clinic = calculateClinic(gmb, clinicPremiums[2]);
-          console.log("clinic4: ", clinic);
-          return clinic;
-        }
-      }
-
-      function calculateTotalClinicValue(gmb, rent, staff, rosterSize) {
-        let totalClinicValue = 0;
-        const clinicValue = calculateClinicValue(gmb, rent, staff, rosterSize);
-        if (rosterSize > 1400) {
-          totalClinicValue =
-            clinicValue + totalClinicValuePremiums[0] * rosterSize;
-          console.log("totalClinicValue1: ", totalClinicValue);
-
-          return totalClinicValue;
-        }
-        if (rosterSize > 800) {
-          totalClinicValue =
-            clinicValue + totalClinicValuePremiums[1] * rosterSize;
-          console.log("totalClinicValue2: ", totalClinicValue);
-
-          return totalClinicValue;
-        }
-
-        if (rosterSize < 800) {
-          totalClinicValue =
-            clinicValue + totalClinicValuePremiums[2] * rosterSize;
-          console.log("totalClinicValue2: ", totalClinicValue);
-
-          return totalClinicValue;
-        }
-
-        console.log("totalClinicValue: ", totalClinicValue);
-
-        return totalClinicValue;
-      }
-
-      function sendReportMail() {}
-
-      function displayMailSentMsg() {
-        msg.classList.remove("hidden");
-        msg.innerHTML = "<span>The Report Sent Has To Your Email !!</span>";
-        setTimeout(() => {
-          msg.classList.add("hidden");
-        }, 3000);
-      }
-
-      function clearFields() {
-        gmb.value = 30000;
-        rent.value = 2000;
-        staff.value = 1;
-        rosterSize.value = 10;
-        gmbOutput.textContent = "";
-        rentOutput.textContent = "";
-      }
-    </script>
+    <script src="./main.js"></script>
   </body>
 </html>

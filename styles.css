@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700;800;900&display=swap");
+
+:root {
+  --primary: hsl(204, 88%, 56%);
+  --gray: hsl(0, 0%, 80%);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background: white;
+}
+
+.shadow {
+  /* box-shadow: 2px 2px 30px 10px f1f5f7; */
+}
+
+.ori__container {
+  max-width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: auto;
+}
+
+.ori__container--inner {
+  background: #f1f5f7;
+  border-radius: 8px;
+  padding: 1em;
+}
+
+.header {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  padding: 1rem 0 10px;
+}
+
+.header p {
+  margin: 1rem 0;
+}
+
+.slider-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 10px;
+  width: 80%;
+  margin: auto;
+}
+
+.slider-wrapper p {
+}
+
+.slider-content {
+  position: relative;
+
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.tooltip {
+  position: absolute;
+  display: block;
+
+  border: 2px solid var(--gray);
+  left: 0%;
+  transform: translateY(-130%);
+  color: var(--primary);
+  font-weight: 700;
+  padding: 3px 10px;
+}
+
+.tooltip::before {
+  content: "";
+  display: block;
+  position: absolute;
+
+  bottom: -19px;
+  left: 50%;
+
+  border: 8px solid transparent;
+  border-top: 10px solid var(--gray);
+
+  transform: translateX(-50%);
+}
+
+.slider {
+  width: 100%;
+  appearance: none;
+  height: 5px;
+  background: #e1e1e1;
+  border-radius: 3px;
+}
+
+.slider::-webkit-slider-thumb,
+.slider::-moz-range-thumb {
+  appearance: none;
+  background: hsl(0, 0%, 100%);
+  height: 16px;
+  width: 16px;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+}
+
+.slider::-moz-range-progress {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 3px;
+}
+
+.footer {
+  width: max-content;
+  margin: 1.3rem auto;
+  text-align: center;
+
+  border-radius: 5px;
+  padding: 1rem 2rem;
+
+  border: 3px solid var(--primary);
+}
+
+#totalValueResult {
+  font-size: 1.6rem;
+  color: var(--primary);
+  margin: 0.5rem 0;
+}
+
+@media (min-width: 768px) {
+  .ori__container {
+    max-width: 60%;
+  }
+  .header {
+    width: 60%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ori__container {
+    max-width: 35%;
+  }
+}

@@ -1,0 +1,13 @@
+<div>
+  <iframe
+    src="https://roi-calculator-v01.netlify.app/?width=300"
+    title="Inline Frame Example"
+    style="width: 100%; height: 100%; overflow: hidden"
+    frameborder="0"
+  ></iframe>
+</div>
+
+<script>
+  const url = new URL("https://roi-calculator-v01.netlify.app/?width=300");
+  console.log(url.searchParams.get("width"));
+</script>
