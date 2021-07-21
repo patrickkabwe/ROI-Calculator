@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
     rentOutput.style.left = (rent.value / 15000) * 100 - 2.5 + "%";
   }
   staffOutput.textContent = `${parseFloat(staff.value).toLocaleString()}`;
-  staffOutput.style.left = (staff.value / 20) * 100 - 8.8 + "%";
-  console.log(staff.value);
+  staffOutput.style.left = (staff.value / 20) * 100 - 6 + "%";
+
   prsOutput.textContent = `${parseFloat(rosterSize.value).toLocaleString()}`;
   prsOutput.style.left = (rosterSize.value / 1000) * 100 - 4.5 + "%";
 
