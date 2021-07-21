@@ -19,38 +19,76 @@ form.addEventListener("submit", calculate);
 // Add Initial Values
 document.addEventListener("DOMContentLoaded", () => {
   gmbOutput.textContent = `$${parseFloat(gmb.value).toLocaleString()}`;
-  positionToolTip(gmbOutput.textContent);
+  gmbOutput.style.left = `${(gmb.value / 150000) * 100 - 10}%`;
+
   rentOutput.textContent = `$${parseFloat(rent.value).toLocaleString()}`;
+  rentOutput.style.left = (rent.value / 15000) * 100 - 10 + "%";
+  if (parseInt(rent.value) < 11000) {
+    rentOutput.style.left = (rent.value / 15000) * 100 - 7 + "%";
+  } else if (parseInt(rent.value) < 2000) {
+    rentOutput.style.left = (rent.value / 15000) * 100 - 2.5 + "%";
+  }
   staffOutput.textContent = `${parseFloat(staff.value).toLocaleString()}`;
+  staffOutput.style.left = (staff.value / 20) * 100 - 8.8 + "%";
+  console.log(staff.value);
   prsOutput.textContent = `${parseFloat(rosterSize.value).toLocaleString()}`;
+  prsOutput.style.left = (rosterSize.value / 1000) * 100 - 4.5 + "%";
+
+  if (parseInt(rosterSize.value) < 400) {
+    prsOutput.style.left = (rosterSize.value / 1000) * 100 - 4.5 + "%";
+  } else if (parseInt(rosterSize.value) < 750) {
+    prsOutput.style.left = (rosterSize.value / 1000) * 100 - 8.5 + "%";
+  } else {
+    prsOutput.style.left = (rosterSize.value / 1000) * 100 - 10 + "%";
+  }
 });
 
 gmb.addEventListener("input", (e) => {
   calculate();
   gmbOutput.textContent = `$${parseFloat(e.target.value).toLocaleString()}`;
-  // gmbOutput.style.left = `${e.target.value/1}%`;
+  gmbOutput.style.left = `${(e.target.value / 150000) * 100 - 10}%`;
   console.log(gmbOutput.style.left);
 });
 
 rent.addEventListener("input", (e) => {
   calculate();
   rentOutput.textContent = `$${parseFloat(e.target.value).toLocaleString()}`;
+  rentOutput.style.left = (e.target.value / 15000) * 100 - 10 + "%";
+  if (parseInt(e.target.value) < 11000) {
+    rentOutput.style.left = (e.target.value / 15000) * 100 - 7 + "%";
+  }
+  if (parseInt(e.target.value) < 2000) {
+    rentOutput.style.left = (e.target.value / 15000) * 100 - 2.5 + "%";
+  }
 });
 
 staff.addEventListener("input", (e) => {
   calculate();
   staffOutput.textContent = parseFloat(e.target.value);
+  staffOutput.style.left = (e.target.value / 20) * 100 - 6 + "%";
+  console.log(staffOutput.style.left);
 });
 
 rosterSize.addEventListener("input", (e) => {
   calculate();
   prsOutput.textContent = parseFloat(e.target.value);
+  // const percent = positionToolTip(10, e.target.value);
+
+  if (parseInt(e.target.value) < 400) {
+    prsOutput.style.left = (e.target.value / 1000) * 100 - 4.5 + "%";
+  } else if (parseInt(e.target.value) < 750) {
+    prsOutput.style.left = (e.target.value / 1000) * 100 - 8.5 + "%";
+  } else {
+    prsOutput.style.left = (e.target.value / 1000) * 100 - 10 + "%";
+  }
 });
 
-function positionToolTip(value) {
-  let cleanedVal = value?.replace("$", "").replace(",", "");
-  console.log(cleanedVal / 2 + "%");
-  return cleanedVal / 2 + "%";
+function positionToolTip(min, max) {
+  const sum = min + max;
+  const average = sum / 2;
+  const range = max - min;
+  const percentage = (range / average) * 100;
+  return percentage;
 }
 
 // Functions
@@ -100,23 +138,23 @@ function calculateClinicValue(gmb, rent, staff, rosterSize) {
 
   if (VALUE_OF_CLINIC > 2 * rosterSize) {
     clinic = calculateClinic(gmb, clinicPremiums[0]);
-    console.log("clinic1: ", clinic);
+    // console.log("clinic1: ", clinic);
     return clinic;
   }
   if (VALUE_OF_CLINIC > rosterSize) {
     clinic = calculateClinic(gmb, clinicPremiums[1]);
-    console.log("clinic2: ", clinic);
+    // console.log("clinic2: ", clinic);
     return clinic;
   }
   if (VALUE_OF_CLINIC < 0) {
     clinic = calculateClinic(gmb, clinicPremiums[3]);
-    console.log("clinic3: ", clinic);
+    // console.log("clinic3: ", clinic);
     return clinic;
   }
 
   if (VALUE_OF_CLINIC < rosterSize) {
     clinic = calculateClinic(gmb, clinicPremiums[2]);
-    console.log("clinic4: ", clinic);
+    // console.log("clinic4: ", clinic);
     return clinic;
   }
 }
@@ -126,20 +164,20 @@ function calculateTotalClinicValue(gmb, rent, staff, rosterSize) {
   const clinicValue = calculateClinicValue(gmb, rent, staff, rosterSize);
   if (rosterSize > 1400) {
     totalClinicValue = clinicValue + totalClinicValuePremiums[0] * rosterSize;
-    console.log("totalClinicValue1: ", totalClinicValue);
+    // console.log("totalClinicValue1: ", totalClinicValue);
 
     return totalClinicValue;
   }
   if (rosterSize > 800) {
     totalClinicValue = clinicValue + totalClinicValuePremiums[1] * rosterSize;
-    console.log("totalClinicValue2: ", totalClinicValue);
+    // console.log("totalClinicValue2: ", totalClinicValue);
 
     return totalClinicValue;
   }
 
   if (rosterSize < 800) {
     totalClinicValue = clinicValue + totalClinicValuePremiums[2] * rosterSize;
-    console.log("totalClinicValue2: ", totalClinicValue);
+    // console.log("totalClinicValue2: ", totalClinicValue);
 
     return totalClinicValue;
   }
