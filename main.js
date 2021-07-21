@@ -19,26 +19,22 @@ form.addEventListener("submit", calculate);
 // Add Initial Values
 document.addEventListener("DOMContentLoaded", () => {
   gmbOutput.textContent = `$${parseFloat(gmb.value).toLocaleString()}`;
-  const GMB = positionToolTip(gmb.value);
+  gmbOutput.style.left = `${(gmb.value / 150000) * 100 - 10}%`;
 
   rentOutput.textContent = `$${parseFloat(rent.value).toLocaleString()}`;
-  rentOutput.style.left = (rent.value / 15000) * 100 - 4 + "%";
-  if (parseInt(rent.value) < 500) {
-    rentOutput.style.left = (rent.value / 15000) * 100 - 4 + "%";
-  } else if (parseInt(rent.value) < 8000) {
-    rentOutput.style.left = (rent.value / 15000) * 100 - 10 + "%";
-  } else if (parseInt(rent.value) < 14000) {
-    rentOutput.style.left = (rent.value / 15000) * 100 - 11 + "%";
-  } else if (parseInt(rent.value) > 14000) {
-    rentOutput.style.left = (rent.value / 15000) * 100 - 13 + "%";
+  rentOutput.style.left = (rent.value / 15000) * 100 - 10 + "%";
+  if (parseInt(rent.value) < 11000) {
+    rentOutput.style.left = (rent.value / 15000) * 100 - 7 + "%";
+  } else if (parseInt(rent.value) < 2000) {
+    rentOutput.style.left = (rent.value / 15000) * 100 - 2.5 + "%";
   }
   staffOutput.textContent = `${parseFloat(staff.value).toLocaleString()}`;
   staffOutput.style.left = (staff.value / 20) * 100 - 8.8 + "%";
-
+  console.log(staff.value);
   prsOutput.textContent = `${parseFloat(rosterSize.value).toLocaleString()}`;
   prsOutput.style.left = (rosterSize.value / 1000) * 100 - 4.5 + "%";
 
-  if (parseInt(e.target.value) < 400) {
+  if (parseInt(rosterSize.value) < 400) {
     prsOutput.style.left = (rosterSize.value / 1000) * 100 - 4.5 + "%";
   } else if (parseInt(rosterSize.value) < 750) {
     prsOutput.style.left = (rosterSize.value / 1000) * 100 - 8.5 + "%";
@@ -50,24 +46,19 @@ document.addEventListener("DOMContentLoaded", () => {
 gmb.addEventListener("input", (e) => {
   calculate();
   gmbOutput.textContent = `$${parseFloat(e.target.value).toLocaleString()}`;
-  thumb.style.left = GMB + "%";
-  console.log(thumb.style.left);
-  gmbOutput.style.left = `${e.target.value / 1}%`;
+  gmbOutput.style.left = `${(e.target.value / 150000) * 100 - 10}%`;
   console.log(gmbOutput.style.left);
 });
 
 rent.addEventListener("input", (e) => {
   calculate();
   rentOutput.textContent = `$${parseFloat(e.target.value).toLocaleString()}`;
-  rentOutput.style.left = (e.target.value / 15000) * 100 - 6 + "%";
-  if (parseInt(e.target.value) < 500) {
-    rentOutput.style.left = (e.target.value / 15000) * 100 - 4 + "%";
-  } else if (parseInt(e.target.value) < 8000) {
-    rentOutput.style.left = (e.target.value / 15000) * 100 - 10 + "%";
-  } else if (parseInt(e.target.value) < 14000) {
-    rentOutput.style.left = (e.target.value / 15000) * 100 - 11 + "%";
-  } else if (parseInt(e.target.value) > 14000) {
-    rentOutput.style.left = (e.target.value / 15000) * 100 - 13 + "%";
+  rentOutput.style.left = (e.target.value / 15000) * 100 - 10 + "%";
+  if (parseInt(e.target.value) < 11000) {
+    rentOutput.style.left = (e.target.value / 15000) * 100 - 7 + "%";
+  }
+  if (parseInt(e.target.value) < 2000) {
+    rentOutput.style.left = (e.target.value / 15000) * 100 - 2.5 + "%";
   }
 });
 
