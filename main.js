@@ -22,6 +22,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const GMB = positionToolTip(gmb.value);
 
   rentOutput.textContent = `$${parseFloat(rent.value).toLocaleString()}`;
+  rentOutput.style.left = (rent.value / 15000) * 100 - 4 + "%";
+  if (parseInt(rent.value) < 500) {
+    rentOutput.style.left = (rent.value / 15000) * 100 - 4 + "%";
+  } else if (parseInt(rent.value) < 8000) {
+    rentOutput.style.left = (rent.value / 15000) * 100 - 10 + "%";
+  } else if (parseInt(rent.value) < 14000) {
+    rentOutput.style.left = (rent.value / 15000) * 100 - 11 + "%";
+  } else if (parseInt(rent.value) > 14000) {
+    rentOutput.style.left = (rent.value / 15000) * 100 - 13 + "%";
+  }
   staffOutput.textContent = `${parseFloat(staff.value).toLocaleString()}`;
   staffOutput.style.left = (staff.value / 20) * 100 - 8.8 + "%";
 
@@ -46,11 +56,19 @@ gmb.addEventListener("input", (e) => {
   console.log(gmbOutput.style.left);
 });
 
-console.log(thumb);
-
 rent.addEventListener("input", (e) => {
   calculate();
   rentOutput.textContent = `$${parseFloat(e.target.value).toLocaleString()}`;
+  rentOutput.style.left = (e.target.value / 15000) * 100 - 6 + "%";
+  if (parseInt(e.target.value) < 500) {
+    rentOutput.style.left = (e.target.value / 15000) * 100 - 4 + "%";
+  } else if (parseInt(e.target.value) < 8000) {
+    rentOutput.style.left = (e.target.value / 15000) * 100 - 10 + "%";
+  } else if (parseInt(e.target.value) < 14000) {
+    rentOutput.style.left = (e.target.value / 15000) * 100 - 11 + "%";
+  } else if (parseInt(e.target.value) > 14000) {
+    rentOutput.style.left = (e.target.value / 15000) * 100 - 13 + "%";
+  }
 });
 
 staff.addEventListener("input", (e) => {
@@ -63,6 +81,8 @@ staff.addEventListener("input", (e) => {
 rosterSize.addEventListener("input", (e) => {
   calculate();
   prsOutput.textContent = parseFloat(e.target.value);
+  // const percent = positionToolTip(10, e.target.value);
+
   if (parseInt(e.target.value) < 400) {
     prsOutput.style.left = (e.target.value / 1000) * 100 - 4.5 + "%";
   } else if (parseInt(e.target.value) < 750) {
@@ -72,8 +92,12 @@ rosterSize.addEventListener("input", (e) => {
   }
 });
 
-function positionToolTip(value) {
-  return value;
+function positionToolTip(min, max) {
+  const sum = min + max;
+  const average = sum / 2;
+  const range = max - min;
+  const percentage = (range / average) * 100;
+  return percentage;
 }
 
 // Functions
