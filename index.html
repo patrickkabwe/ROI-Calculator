@@ -10,108 +10,98 @@
   </head>
   <body>
     <div class="ori__container">
-      <div class="shadow ori__container--inner">
-        <div class="header">
-          <h2 class="">What’s your practice worth?</h2>
-          <p class="">
-            Calculate the value of your clinic and see how much you could get
-            for your life’s work.
-          </p>
-        </div>
+      <div class="header">
+        <h2 class="">What’s your practice worth?</h2>
+        <p class="">
+          Calculate the value of your clinic and see how much you could get for
+          your life’s work.
+        </p>
+      </div>
 
-        <div class="">
-          <form id="form">
-            <!-- GMB -->
-            <div class="slider-wrapper">
-              <p>Gross Monthly Billings</p>
-              <div class="slider-content">
-                <span id="gbm-output" class="tooltip"></span>
-                <input
-                  type="range"
-                  min="5000"
-                  max="150000"
-                  step="10"
-                  id="gbm"
-                  value="30000"
-                  class="slider"
-                />
-              </div>
-            </div>
-            <!-- End of GMB -->
-
-            <!-- RENT -->
-
-            <div class="slider-wrapper">
-              <p>Rent</p>
-              <div class="slider-content">
-                <span id="rent-output" class="tooltip"></span>
-                <input
-                  type="range"
-                  min="0"
-                  max="15000"
-                  step="1.5"
-                  id="rent"
-                  value="2000"
-                  class="slider"
-                />
-              </div>
-            </div>
-
-            <!-- End of RENT -->
-
-            <!-- ROSTER -->
-
-            <div class="slider-wrapper">
-              <p>Patient Roster Size</p>
-              <div class="slider-content">
-                <span id="prs-output" class="tooltip"></span>
-                <input
-                  type="range"
-                  min="10"
-                  max="1000"
-                  step="10"
-                  id="prs"
-                  value="100"
-                  class="slider"
-                />
-              </div>
-            </div>
-
-            <!-- End of ROSTER -->
-
-            <!-- STAFF -->
-            <div class="slider-wrapper">
-              <p>Staff</p>
-              <div class="slider-content">
-                <span id="staff-output" class="tooltip"></span>
-                <input
-                  type="range"
-                  min="1"
-                  max="20"
-                  step="1"
-                  id="staff"
-                  value="5"
-                  class="slider"
-                />
-              </div>
-            </div>
-
-            <!-- End of STAFF -->
-
-            <div class="" id="msg"></div>
-          </form>
-
-          <div class="footer" id="results">
-            <div class="footer__inner">
-              <p>You could receive</p>
-              <h4 id="totalValueResult">$336,751</h4>
-              <p>for your clinic</p>
-            </div>
+      <main style="margin-top: 30px">
+        <!-- GROSS MONTHLY BILLING -->
+        <div class="slider-wrapper">
+          <p style="margin: 40xp 0">Gross Monthly Billings</p>
+          <div class="range-wrap">
+            <div class="range-value" id="gbm-output"></div>
+            <input
+              type="range"
+              min="5000"
+              max="150000"
+              step="10"
+              id="gbm"
+              value="30000"
+            />
           </div>
         </div>
-      </div>
+        <!-- END OF GROSS MONTHLY BILLING -->
+
+        <!-- RENT -->
+        <div class="slider-wrapper">
+          <p style="margin: 40xp 0">Rent</p>
+          <div class="range-wrap">
+            <div class="range-value" id="rent-output"></div>
+            <input
+              type="range"
+              min="5000"
+              max="150000"
+              step="10"
+              id="rent"
+              value="30000"
+            />
+          </div>
+        </div>
+        <!-- END OF RENT -->
+
+        <!-- STAFF -->
+        <div class="slider-wrapper">
+          <p style="margin: 40xp 0">Staff</p>
+          <div class="range-wrap">
+            <div class="range-value" id="staff-output"></div>
+            <input
+              type="range"
+              min="1"
+              max="20"
+              step="1"
+              id="staff"
+              value="5"
+            />
+          </div>
+        </div>
+        <!-- END OF STAFF -->
+
+        <!-- ROSTER -->
+        <div class="slider-wrapper">
+          <p style="margin: 40xp 0">Patient Roster Size</p>
+          <div class="range-wrap">
+            <div class="range-value" id="prs-output"></div>
+            <input
+              type="range"
+              min="10"
+              max="1000"
+              step="10"
+              id="prs"
+              value="100"
+            />
+          </div>
+        </div>
+
+        <!-- End of ROSTER -->
+      </main>
+
+      <footer>
+        <div class="footer" id="results">
+          <div class="footer__inner">
+            <p>You could receive</p>
+            <h4 id="totalValueResult">$336,751</h4>
+            <p>for your clinic</p>
+          </div>
+        </div>
+      </footer>
     </div>
 
-    <script src="./main.js"></script>
+    <script></script>
+
+    <script src="./app.js"></script>
   </body>
 </html>

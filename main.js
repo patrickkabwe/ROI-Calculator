@@ -205,3 +205,110 @@ function clearFields() {
   gmbOutput.textContent = "";
   rentOutput.textContent = "";
 }
+
+/*
+
+      <--
+        <div class="">
+          <form id="form">
+            <!-- GMB -->
+            <div class="slider-wrapper">
+              <p>Gross Monthly Billings</p>
+              <div class="slider-content">
+                <span id="gbm-output" class="tooltip"></span>
+                <input
+                  type="range"
+                  min="5000"
+                  max="150000"
+                  step="10"
+                  id="gbm"
+                  value="30000"
+                  class="slider"
+                />
+              </div>
+            </div>
+            <!-- End of GMB -->
+
+            <!-- RENT -->
+
+            <div class="slider-wrapper">
+              <p>Rent</p>
+              <div class="slider-content">
+                <span id="rent-output" class="tooltip"></span>
+                <input
+                  type="range"
+                  min="0"
+                  max="15000"
+                  step="1.5"
+                  id="rent"
+                  value="2000"
+                  class="slider"
+                />
+              </div>
+            </div>
+
+            <!-- End of RENT -->
+
+            <!-- ROSTER -->
+            <div class="slider-wrapper">
+              <p style="margin: 40xp 0;">Patient Roster Size</p>
+              <div class="range-wrap">
+                <div class="range-value" id="prs-output"></div>
+                <input
+                  type="range"
+                  min="10"
+                  max="1000"
+                  step="10"
+                  id="prs"
+                  value="100"
+                  class="slider"
+                />
+              </div>
+            </div>
+
+            <!-- End of ROSTER -->
+
+            <!-- STAFF -->
+            <!-- <div class="slider-wrapper">
+              <p>Staff</p>
+              <div class="slider-content">
+                <span id="staff-output" class="tooltip"></span>
+                <input
+                  type="range"
+                  min="1"
+                  max="20"
+                  step="1"
+                  id="staff"
+                  value="5"
+                  class="slider"
+                />
+              </div>
+            </div> -->
+
+            <!-- End of STAFF -->
+
+            <div class="" id="msg"></div>
+          </form>
+
+          <div class="footer" id="results">
+            <div class="footer__inner">
+              <p>You could receive</p>
+              <h4 id="totalValueResult">$336,751</h4>
+              <p>for your clinic</p>
+            </div>
+          </div>
+        </div> -->
+*/ 
+
+/**
+ *    // setValue = () => {
+      //   const newValue = Number(
+      //       ((range.value - range.min) * 100) / (range.max - range.min)
+      //     ),
+      //     newPosition = 10 - newValue * 0.2;
+      //   rangeV.innerHTML = `<span>${range.value}</span>`;
+      //   rangeV.style.left = `calc(${newValue}% + (${newPosition}px))`;
+      // };
+ * 
+ * 
+ * **/ 
