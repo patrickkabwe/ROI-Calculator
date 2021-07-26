@@ -33,17 +33,18 @@ staff.addEventListener("input", setValue);
 // Calculates The range percentage and sets appropriate styles
 
 function calcuRangeValue(value, minValue, maxValue, outputEl, El) {
-  console.log("RUN...");
   const newValue = Number(((value - minValue) * 100) / (maxValue - minValue)),
     newPosition = 10 - newValue * 0.2;
 
-    console.log(El.id);
-    if (El.id === "gbm") {
-        outputEl.innerHTML = `<span>$${parseFloat(
-          El.value
-        ).toLocaleString()}</span>`;
-    }
-  outputEl.innerHTML = `<span>${El.value}</span>`;
+  console.log(El.id);
+  if (El.id === "gbm" | El.id === "rent") {
+    outputEl.innerHTML = `<span>$${parseFloat(
+      El.value
+    ).toLocaleString()}+</span>`;
+  } else {
+    outputEl.innerHTML = `<span>${El.value}</span>`;
+  }
+
   outputEl.style.left = `calc(${newValue}% + (${newPosition}px))`;
 }
 
