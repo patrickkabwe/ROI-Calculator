@@ -75,6 +75,7 @@ body {
 
 .slider-wrapper p {
   font-size: var(--fs-md);
+  margin-bottom: 12px;
   font-weight: 700;
   color: var(--primary);
 }
@@ -103,7 +104,7 @@ body {
 
   border: 2px solid var(--gray);
   color: var(--primary);
-  font-size: var(--fs-sm);
+  font-size: clamp(var(--fs-sm),2.5vw,.85rem);
   font-weight: 600;
   padding: 0 10px;
   display: block;
@@ -190,9 +191,10 @@ footer p {
 }
 
 #totalValueResult {
-  font-size: clamp(1.2rem,2.5vw,3rem) ;
+  font-size: clamp(1.2rem,2.5vw,6rem) ;
   color: var(--primary);
   margin: 0.5rem 0;
+  font-weight: 900;
 }
 
 @media (min-width: 768px) {
