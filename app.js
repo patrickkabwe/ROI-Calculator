@@ -55,7 +55,7 @@ function addSign(El, outputEl) {
       ).toLocaleString()}</span>`;
     } else {
       outputEl.innerHTML = `<span>$${parseFloat(El.value).toLocaleString()}${
-        El.value == parseInt(El.max) ? "+" : ""
+        El.value >= parseInt(El.max) ? "+" : ""
       }</span>`;
     }
   } else {
@@ -65,7 +65,7 @@ function addSign(El, outputEl) {
       ).toLocaleString()}</span>`;
     } else {
       outputEl.innerHTML = `<span>${parseFloat(El.value).toLocaleString()}${
-        El.value == parseInt(El.max) ? "+" : ""
+        El.value >= parseInt(El.max) ? "+" : ""
       }</span>`;
     }
   }
