@@ -19,7 +19,6 @@ body {
   font-family: "Montserrat", sans-serif;
   background: white;
   min-height: 100vh;
-  /* padding: 0 10vh; */
   margin: 0;
   position: relative;
   display: flex;
@@ -32,15 +31,13 @@ body {
   width: 100%;
   background: #f1f5f7;
   border-radius: 8px;
-  /* margin: 3rem 0; */
-  /* padding: 1em; */
+  padding: 50px 0;
 }
 
 .header {
   width: 70%;
-  margin: 50px auto 10px;
+  margin: 10px auto 10px;
   text-align: center;
-  /* padding: 1rem 0 10px; */
 }
 
 .header h2 {
@@ -68,7 +65,6 @@ body {
 .slider-wrapper {
   display: flex;
   flex-direction: column;
-  /* padding: 15px 10px; */
   width: 80%;
   margin: auto;
 }
@@ -181,7 +177,7 @@ input[type="range"]:focus::-webkit-slider-runnable-track {
   text-align: center;
 
   border-radius: 5px;
-  padding: 1.3rem 5rem;
+  padding: 2rem 5rem;
 
   border: 3px solid var(--primary);
 }
