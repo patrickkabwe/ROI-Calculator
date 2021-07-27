@@ -35,15 +35,7 @@ staff.addEventListener("input", setValue);
 function calcuRangeValue(value, minValue, maxValue, outputEl, El) {
   const newValue = Number(((value - minValue) * 100) / (maxValue - minValue)),
     newPosition = 10 - newValue * 0.2;
-
-  console.log(El.id);
-  if (El.id === "gbm" | El.id === "rent") {
-    outputEl.innerHTML = `<span>$${parseFloat(
-      El.value
-    ).toLocaleString()}+</span>`;
-  } else {
-    outputEl.innerHTML = `<span>${El.value}</span>`;
-  }
+  addCurrencySign(El, outputEl);
 
   outputEl.style.left = `calc(${newValue}% + (${newPosition}px))`;
 }
@@ -53,6 +45,30 @@ function calcuRangeValue(value, minValue, maxValue, outputEl, El) {
 function displayResults(clinicValueT) {
   let totalValueResult = document.getElementById("totalValueResult");
   totalValueResult.textContent = `$${clinicValueT.toLocaleString()}`;
+}
+
+function addCurrencySign(El, outputEl) {
+  if ((El.id === "gbm") | (El.id === "rent")) {
+    if (El.value <= parseInt(El.min)) {
+      outputEl.innerHTML = `<span><$${parseFloat(
+        El.value
+      ).toLocaleString()}</span>`;
+    } else {
+      outputEl.innerHTML = `<span>$${parseFloat(
+        El.value
+      ).toLocaleString()}+</span>`;
+    }
+  } else {
+    if (El.value <= parseInt(El.min)) {
+      outputEl.innerHTML = `<span><${parseFloat(
+        El.value
+      ).toLocaleString()}</span>`;
+    } else {
+      outputEl.innerHTML = `<span>${parseFloat(
+        El.value
+      ).toLocaleString()}+</span>`;
+    }
+  }
 }
 
 function calculate() {
@@ -65,7 +81,6 @@ function calculate() {
   const clinicValueT = calculateTotalClinicValue(GMB, RENT, STAFF, ROSTER_SIZE);
   displayResults(clinicValueT);
 
-  console.log(clinicValueT);
   return clinicValue;
 }
 
@@ -133,8 +148,6 @@ function calculateTotalClinicValue(gmb, rent, staff, rosterSize) {
 
     return totalClinicValue;
   }
-
-  console.log("totalClinicValue: ", totalClinicValue);
 
   return totalClinicValue;
 }
