@@ -184,6 +184,7 @@ input[type="range"]:focus::-webkit-slider-runnable-track {
 
 footer p {
   font-size: clamp(0.8rem,2.5vw,1rem);
+  font-weight: 500;
 }
 
 #totalValueResult {
