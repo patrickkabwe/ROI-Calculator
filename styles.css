@@ -74,7 +74,7 @@ body {
 }
 
 .slider-wrapper p {
-  font-size: var(--fs-sm);
+  font-size: var(--fs-md);
   font-weight: 700;
   color: var(--primary);
 }
@@ -190,7 +190,7 @@ footer p {
 }
 
 #totalValueResult {
-  font-size: clamp(1.2rem,2.5vw,2.2rem) ;
+  font-size: clamp(1.2rem,2.5vw,3rem) ;
   color: var(--primary);
   margin: 0.5rem 0;
 }
