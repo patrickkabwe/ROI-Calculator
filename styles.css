@@ -101,7 +101,7 @@ body {
   line-height: 24px;
   text-align: center;
 
-  border: 3px solid var(--gray);
+  border: 2px solid var(--gray);
   color: var(--primary);
   font-size: var(--fs-sm);
   font-weight: 600;
@@ -146,7 +146,7 @@ input[type="range"]::-webkit-slider-thumb {
   height: 20px;
   width: 20px;
   border-radius: 50%;
-  border: 2px solid var(--primary);
+  border: 3px solid var(--primary);
   background: #fff;
   cursor: pointer;
   -webkit-appearance: none;
@@ -159,7 +159,7 @@ input[type="range"]::-moz-range-thumb {
   height: 20px;
   width: 20px;
   border-radius: 50%;
-  border: 2px solid var(--primary);
+  border: 3px solid var(--primary);
   background: #fff;
   cursor: pointer;
   -webkit-appearance: none;
