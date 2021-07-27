@@ -35,7 +35,7 @@ staff.addEventListener("input", setValue);
 function calcuRangeValue(value, minValue, maxValue, outputEl, El) {
   const newValue = Number(((value - minValue) * 100) / (maxValue - minValue)),
     newPosition = 10 - newValue * 0.2;
-  addCurrencySign(El, outputEl);
+  addSign(El, outputEl);
 
   outputEl.style.left = `calc(${newValue}% + (${newPosition}px))`;
 }
@@ -47,16 +47,16 @@ function displayResults(clinicValueT) {
   totalValueResult.textContent = `$${clinicValueT.toLocaleString()}`;
 }
 
-function addCurrencySign(El, outputEl) {
+function addSign(El, outputEl) {
   if ((El.id === "gbm") | (El.id === "rent")) {
     if (El.value <= parseInt(El.min)) {
       outputEl.innerHTML = `<span><$${parseFloat(
         El.value
       ).toLocaleString()}</span>`;
     } else {
-      outputEl.innerHTML = `<span>$${parseFloat(
-        El.value
-      ).toLocaleString()}+</span>`;
+      outputEl.innerHTML = `<span>$${parseFloat(El.value).toLocaleString()}${
+        El.value == parseInt(El.max) ? "+" : ""
+      }</span>`;
     }
   } else {
     if (El.value <= parseInt(El.min)) {
@@ -64,9 +64,9 @@ function addCurrencySign(El, outputEl) {
         El.value
       ).toLocaleString()}</span>`;
     } else {
-      outputEl.innerHTML = `<span>${parseFloat(
-        El.value
-      ).toLocaleString()}+</span>`;
+      outputEl.innerHTML = `<span>${parseFloat(El.value).toLocaleString()}${
+        El.value == parseInt(El.max) ? "+" : ""
+      }</span>`;
     }
   }
 }
