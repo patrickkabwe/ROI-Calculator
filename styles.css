@@ -38,18 +38,18 @@ body {
 
 .header {
   width: 70%;
-  margin: 20px auto 10px;
+  margin: 50px auto 10px;
   text-align: center;
   /* padding: 1rem 0 10px; */
 }
 
 .header h2 {
-  font-size: clamp(1.1rem, 1rem, 10%);
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
 }
 
 .header p {
   margin: 1rem auto;
-  font-size: clamp(var(--fs-sm), 1rem, 10%);
+  font-size: clamp(var(--fs-sm), 2.5vw, 1rem);
   max-width: 300px;
 }
 
