@@ -78,83 +78,138 @@ function calculate() {
   const ROSTER_SIZE = parseInt(rosterSize.value);
 
   // const clinicValue = calculateClinicValue(GMB, RENT, STAFF, ROSTER_SIZE);
-  const clinicValueT = calculateTotalClinicValue(GMB, RENT, STAFF, ROSTER_SIZE);
+  const clinicValueT = calculateTotalClinicValue(STAFF, RENT, GMB, ROSTER_SIZE);
+
+  console.log(ROSTER_SIZE);
   displayResults(clinicValueT);
 
   return clinicValueT;
 }
 
 function calculateStaffCost(staff) {
-  const HOURS = 140;
+  const HOURS = 160;
   const DOLLAR = 20;
   const staffCost = staff * HOURS * DOLLAR;
   console.log("Staffcost: ", staffCost);
   return staffCost;
 }
 
-function calculateClinic(gmb, premium) {
+const calculateTotalClinicValue = (N, RENT, GMB, ROSTERSIZE) => {
   const BVA = 2;
-  const clinic = premium * BVA * gmb;
-  console.log("ClinicTotsasd: ", clinic);
-  return clinic;
-}
+  const FTE = 160;
+  const STAFFCOST = N * FTE * 20;
+  const profitability = 0.25 * GMB - (RENT + STAFFCOST);
+  let PREMIUM_DISCOUNT = "";
+  let ROSTERSIZEADJUSTMENT = "";
 
-function calculateClinicValue(gmb, rent, staff, rosterSize) {
-  let clinic = 0;
-  const X_MULTIPLE = 0.25;
-  const staffCost = calculateStaffCost(staff);
-  const PROFITABILITY = (X_MULTIPLE * gmb) - rent - staffCost;
-  // console.log("Rent: ", rent);
-  // console.log("Staff: ", staff);
-  console.log("PROFITABILITY: ", PROFITABILITY);
-
-  if (PROFITABILITY < 0) {
-    clinic = calculateClinic(gmb, clinicPremiums[3]);
-    console.log("clinic3: ", clinic);
-    return clinic;
+  //PREMIUM IF CHECK
+  if (profitability > 2 * ROSTERSIZE) {
+    PREMIUM_DISCOUNT = 1.15 * profitability;
+    // use a premium of 1.15
   }
 
-  if (PROFITABILITY > 2 * rosterSize) {
-    clinic = calculateClinic(gmb, clinicPremiums[0]);
-    // console.log("clinic1: ", clinic);
-    return clinic;
+  if (profitability > 1 * ROSTERSIZE) {
+    //use a premiun of 1.05
+    PREMIUM_DISCOUNT = 1.05;
   }
-  if (PROFITABILITY > rosterSize) {
-    clinic = calculateClinic(gmb, clinicPremiums[1]);
-    // console.log("clinic2: ", clinic);
-    return clinic;
+  if (profitability < 1 * ROSTERSIZE) {
+    // use a premium of 0.95
+    PREMIUM_DISCOUNT = 0.95;
   }
-
-
-  if (PROFITABILITY < rosterSize) {
-    clinic = calculateClinic(gmb, clinicPremiums[2]);
-    // console.log("clinic4: ", clinic);
-    return clinic;
-  }
-}
-
-function calculateTotalClinicValue(gmb, rent, staff, rosterSize) {
-  let totalClinicValue = 0;
-  const clinicValue = calculateClinicValue(gmb, rent, staff, rosterSize);
-  if (rosterSize > 1400) {
-    totalClinicValue = clinicValue + totalClinicValuePremiums[0] * rosterSize;
-    console.log("totalClinicValue1: ", totalClinicValue);
-
-    return totalClinicValue;
-  }
-  if (rosterSize >= 800) {
-    totalClinicValue = clinicValue + totalClinicValuePremiums[1] * rosterSize;
-    console.log("totalClinicValue2: ", totalClinicValue);
-
-    return totalClinicValue;
+  if (profitability < 0) {
+    // use a premium of 0.7
+    PREMIUM_DISCOUNT = 0.75;
+    console.log("worked");
   }
 
-  if (rosterSize < 800) {
-    totalClinicValue = clinicValue + totalClinicValuePremiums[2] * rosterSize;
-    console.log("totalClinicValue2: ", totalClinicValue);
-
-    return totalClinicValue;
+  //ROSTERADJUSMENT IF CHECK
+  if (ROSTERSIZE > 1400) {
+    // use a premium of 1.3
+    ROSTERSIZEADJUSTMENT = 1.3 * ROSTERSIZE;
   }
 
-  return totalClinicValue;
-}
+  if (ROSTERSIZE > 800) {
+    // use a premium of 1.2
+    ROSTERSIZEADJUSTMENT = 1.2 * ROSTERSIZE;
+  }
+  if (ROSTERSIZE < 800) {
+    // use a premium of 0
+    ROSTERSIZEADJUSTMENT = 0.8 * ROSTERSIZE;
+  }
+
+  console.log(ROSTERSIZEADJUSTMENT);
+
+  console.log(
+    PREMIUM_DISCOUNT * BVA * GMB - RENT - 0.5 * STAFFCOST + ROSTERSIZEADJUSTMENT
+  );
+
+  return (
+    PREMIUM_DISCOUNT * BVA * GMB - RENT - 0.5 * STAFFCOST + ROSTERSIZEADJUSTMENT
+  );
+};
+
+// function calculateClinic(gmb, premium,rent,staffCost) {
+//   const BVA = 2;
+//   const clinic = premium * BVA * gmb - rent - 0.5 * staffCost;
+//   console.log("ClinicTotal: ", clinic);
+//   return clinic;
+// }
+
+// function calculateClinicValue(gmb, rent, staff, rosterSize) {
+//   let clinic = 0;
+//   const X_MULTIPLE = 0.25;
+//   const staffCost = calculateStaffCost(staff);
+//   const PROFITABILITY = (X_MULTIPLE * gmb) - rent - staffCost;
+//   // console.log("Rent: ", rent);
+//   // console.log("Staff: ", staff);
+//   console.log("PROFITABILITY: ", PROFITABILITY);
+//   if (PROFITABILITY > 2 * rosterSize) {
+//     clinic = calculateClinic(gmb, clinicPremiums[0],rent,staffCost);
+//     console.log("clinic1: ", clinic);
+//     return clinic;
+//   }
+
+//   if (PROFITABILITY > rosterSize) {
+//     clinic = calculateClinic(gmb, clinicPremiums[1],rent,staffCost);
+//     console.log("clinic2: ", clinic);
+//     return clinic;
+//   }
+
+//   if (PROFITABILITY < 0) {
+//     clinic = calculateClinic(gmb, clinicPremiums[3],rent,staffCost);
+//     console.log("clinic3: ", clinic);
+//     return clinic;
+//   }
+
+//   if (PROFITABILITY < rosterSize) {
+//     clinic = calculateClinic(gmb, clinicPremiums[2],rent,staffCost);
+//     console.log("clinic4: ", clinic);
+//     return clinic;
+//   }
+// }
+
+// function calculateTotalClinicValue(gmb, rent, staff, rosterSize) {
+//   let totalClinicValue = 0;
+//   const clinicValue = calculateClinicValue(gmb, rent, staff, rosterSize);
+//   if (rosterSize > 1400) {
+//     totalClinicValue = clinicValue + (totalClinicValuePremiums[0] * rosterSize);
+//     console.log("totalClinicValue1: ", totalClinicValue);
+
+//     return totalClinicValue;
+//   }
+//   if (rosterSize >= 800) {
+//     totalClinicValue = clinicValue + (totalClinicValuePremiums[1] * rosterSize);
+//     console.log("totalClinicValue2: ", totalClinicValue);
+
+//     return totalClinicValue;
+//   }
+
+//   if (rosterSize < 800) {
+//     totalClinicValue = clinicValue + (totalClinicValuePremiums[2] * rosterSize);
+//     console.log("totalClinicValue2: ", totalClinicValue);
+
+//     return totalClinicValue;
+//   }
+
+//   return totalClinicValue;
+// }
