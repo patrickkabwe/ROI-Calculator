@@ -200,6 +200,9 @@ footer p {
   .footer {
     padding: 2rem 5rem;
   }
+  #totalValueResult {
+  font-size: 3.7rem
+}
 }
 
 @media (min-width: 1024px) {
