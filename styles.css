@@ -26,7 +26,6 @@ body {
   justify-content: center;
 }
 
-
 .ori__container {
   width: 100%;
   background: #f1f5f7;
@@ -100,7 +99,7 @@ body {
 
   border: 2px solid var(--gray);
   color: var(--primary);
-  font-size: clamp(var(--fs-sm),2.5vw,.85rem);
+  font-size: clamp(var(--fs-sm), 2.5vw, 0.85rem);
   font-weight: 600;
   padding: 0 10px;
   display: block;
@@ -170,25 +169,24 @@ input[type="range"]:focus::-webkit-slider-runnable-track {
   box-shadow: 1px 1px 10px 5px #eeeeee;
 }
 
-
 .footer {
   width: max-content;
   margin: 1.3rem auto;
   text-align: center;
 
   border-radius: 5px;
-  padding: 2rem 5rem;
+  padding: 2rem 2rem;
 
   border: 3px solid var(--primary);
 }
 
 footer p {
-  font-size: clamp(0.8rem,2.5vw,1rem);
+  font-size: clamp(0.6rem, 2.5vw, 1rem);
   font-weight: 500;
 }
 
 #totalValueResult {
-  font-size: clamp(2rem,3vw,5rem) ;
+  font-size: clamp(1.5rem, 3vw, 5rem);
   color: var(--primary);
   margin: 0.5rem 0;
   font-weight: 900;
@@ -198,6 +196,9 @@ footer p {
   .footer-p {
     font-size: 0.1px !important;
     background: #000;
+  }
+  .footer {
+    padding: 2rem 5rem;
   }
 }
 
