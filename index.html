@@ -2,106 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--  href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" -->
-    <link href="./styles.css" rel="stylesheet" />
-    <title>Roi-calculator</title>
+    <title>SDP Calculator</title>
   </head>
   <body>
-    <div class="ori__container">
-      <div class="header">
-        <h2 class="">What’s your practice worth?</h2>
-        <p class="">
-          Calculate the value of your clinic and see how much you could get for
-          your life’s work.
-        </p>
-      </div>
-
-      <main style="margin-top: 30px">
-        <!-- GROSS MONTHLY BILLING -->
-        <div class="slider-wrapper">
-          <p style="margin: 40xp 0">Gross Monthly Billings</p>
-          <div class="range-wrap">
-            <div class="range-value" id="gbm-output"></div>
-            <input
-              type="range"
-              min="5000"
-              max="150000"
-              step="10"
-              id="gbm"
-              value="30000"
-            />
-          </div>
-        </div>
-        <!-- END OF GROSS MONTHLY BILLING -->
-
-        <!-- RENT -->
-        <div class="slider-wrapper">
-          <p style="margin: 40xp 0">Rent</p>
-          <div class="range-wrap">
-            <div class="range-value" id="rent-output"></div>
-            <input
-              type="range"
-              min="1000"
-              max="15000"
-              step="10"
-              id="rent"
-              value="2000"
-            />
-          </div>
-        </div>
-        <!-- END OF RENT -->
-
-        <!-- STAFF -->
-        <div class="slider-wrapper">
-          <p style="margin: 40xp 0">Staff</p>
-          <div class="range-wrap">
-            <div class="range-value" id="staff-output"></div>
-            <input
-              type="range"
-              min="1"
-              max="20"
-              step="0.5"
-              id="staff"
-              value="5"
-            />
-          </div>
-        </div>
-        <!-- END OF STAFF -->
-
-        <!-- ROSTER -->
-        <div class="slider-wrapper">
-          <p style="margin: 40xp 0">Patient Roster Size</p>
-          <div class="range-wrap">
-            <div class="range-value" id="prs-output"></div>
-            <input
-              type="range"
-              min="10"
-              max="1400"
-              step="10"
-              id="prs"
-              value="100"
-            />
-          </div>
-        </div>
-
-        <!-- End of ROSTER -->
-      </main>
-
-      <footer>
-        <div class="footer" id="results">
-          <div class="footer__inner">
-            <p>Your practice could be worth</p>
-            <h4 id="totalValueResult">0</h4>
-            
-          </div>
-        </div>
-      </footer>
-    </div>
-
-    <script></script>
-
-    <script src="./app.js"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
