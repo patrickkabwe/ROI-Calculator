@@ -12,6 +12,7 @@ const Layout: FC<
       <ul className="flex items-center justify-between w-full">
         {[1, 2, 3].map((item, index) => (
           <li
+            key={item}
             className={`step ${
               formStep == item ? " bg-white" : "bg-primary-50"
             }`}
